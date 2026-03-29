@@ -1,13 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
 import { AuthService } from './auth.service'
-import { UserService } from '../user/user.service';
 
 @Controller('auth')
 export class AuthController {
 
   constructor(
-    private readonly authService: AuthService,
-    private readonly userService: UserService,
+    private readonly authService: AuthService
   ) {}
 
   @Get('getHello')
@@ -15,7 +13,8 @@ export class AuthController {
     return this.authService.getHello();
   }
 
+  @Get('registerUser')
   registerUser(){
-    this.userService.createUser()
+    return this.authService.registerUser()
   }
 }
