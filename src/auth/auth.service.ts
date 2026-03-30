@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { RegisterDTO } from './dto/registerUser.dto';
+import bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -11,6 +12,9 @@ export class AuthService {
     }
     registerUser(registerUserDTO: RegisterDTO) {
         console.log(registerUserDTO);
+
+        const saltRounds=10;
+        const hash = bcrypt.hash(registerUserDTO.password, saltRounds);
         //Steps
         /**
          * 1.check if email exists
@@ -19,6 +23,6 @@ export class AuthService {
          * 4.generate jwt token
          * 5.send in response
          */
-        return this.userService.createUser();
+        return this.userService.createUser({...registerUserDTO, password: hash});
     }
 }
