@@ -12,7 +12,7 @@ export class Course {
   @Prop({required: true})
   description: string;
   
-  @Prop({required: true, unique: true})
+  @Prop({required: true})
   level: string;
   
   @Prop({required: true})

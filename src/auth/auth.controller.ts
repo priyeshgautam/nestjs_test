@@ -4,6 +4,8 @@ import { RegisterDTO } from './dto/registerUser.dto';
 import { LoginUserDTO } from './dto/loginUser.dto';
 import { AuthGuard } from './auth.guard';
 import { UserService } from 'src/user/user.service';
+import { Roles } from './roles.decorator';
+import { Role } from 'src/user/user.types';
 
 @Controller('auth')
 export class AuthController {
