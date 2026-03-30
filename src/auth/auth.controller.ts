@@ -6,6 +6,7 @@ import { AuthGuard } from './auth.guard';
 import { UserService } from 'src/user/user.service';
 import { Roles } from './roles.decorator';
 import { Role } from 'src/user/user.types';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('auth')
 export class AuthController {
@@ -30,6 +31,7 @@ export class AuthController {
     return this.authService.loginUser(loginUserDTO)
   }
 
+  @Throttle({ default: { limit: 3, ttl: 60 } })
   @UseGuards(AuthGuard)
   @Get('profile')
   async getProfile(@Request() req){
