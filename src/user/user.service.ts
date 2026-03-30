@@ -26,4 +26,8 @@ export class UserService {
             throw err;
         }
     }
+
+    async findUserByEmail(email: string): Promise<User | null> {
+        return this.userModel.findOne({ email }).exec();
+    }
 }
