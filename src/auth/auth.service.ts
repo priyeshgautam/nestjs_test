@@ -18,7 +18,7 @@ export class AuthService {
         const hash = await bcrypt.hash(registerUserDTO.password, saltRounds);
         //Steps
         /**
-         * 1.check if email exists
+         * 1.check if email exists --done
          * 2.hash password  --done
          * 3.store user into db --done
          * 4.generate jwt token
