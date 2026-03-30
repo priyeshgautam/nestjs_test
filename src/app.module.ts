@@ -6,12 +6,14 @@ import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 
+console.log(process.env.MONGODB_URL);
+
 @Module({
   imports: [
     AuthModule, 
     UserModule, 
-    MongooseModule.forRoot('process.env.MONGODB_URL' as string),
-    ConfigModule.forRoot()
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGODB_URL as string)
   ],
   controllers: [AppController],
   providers: [AppService],

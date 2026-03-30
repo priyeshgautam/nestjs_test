@@ -10,19 +10,23 @@ export class AuthService {
     getHello(): string {
         return 'Hello World!';
     }
-    registerUser(registerUserDTO: RegisterDTO) {
-        console.log(registerUserDTO);
+
+    async registerUser(registerUserDTO: RegisterDTO) {
+        console.log("DTO from Auth", registerUserDTO);
 
         const saltRounds=10;
-        const hash = bcrypt.hash(registerUserDTO.password, saltRounds);
+        const hash = await bcrypt.hash(registerUserDTO.password, saltRounds);
         //Steps
         /**
          * 1.check if email exists
-         * 2.hash password
-         * 3.store user into db
+         * 2.hash password  --done
+         * 3.store user into db --done
          * 4.generate jwt token
          * 5.send in response
          */
-        return this.userService.createUser({...registerUserDTO, password: hash});
+        const user= await this.userService.createUser({...registerUserDTO, password: hash});
+
+        console.log('Created User--from userService', user);
+        return user;
     }
 }
