@@ -30,4 +30,7 @@ export class UserService {
     async findUserByEmail(email: string): Promise<User | null> {
         return this.userModel.findOne({ email }).exec();
     }
+    async getUserById(userId: string): Promise<User | null> {
+        return this.userModel.findById(userId).exec();
+    }
 }
