@@ -34,3 +34,8 @@
 
 - **Learning Curve**: Initial setup requires understanding of decorators, guards, and NestJS patterns.
 - **Decorator Usage**: Frequent decorators may obscure underlying logic for beginners.
+
+## TODO / Next Steps
+
+- **Implement Refresh Token Mechanism:** Add refresh token support to enhance JWT authentication and improve session security.
+- **Integrate Testing Framework:** Set up and use an automated testing framework (e.g., Jest) to ensure reliability and maintainability of code.
